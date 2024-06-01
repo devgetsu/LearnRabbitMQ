@@ -1,8 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQMessage.Sender", "RabbitMQMessage.Sender\RabbitMQMessage.Sender.csproj", "{A5ED5884-6002-49E5-9B61-D5CE71BF434F}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQMessage.Sender", "RabbitMQMessage.Sender\RabbitMQMessage.Sender.csproj", "{A5ED5884-6002-49E5-9B61-D5CE71BF434F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQMessage.Reciever", "RabbitMQMessage.Reciever\RabbitMQMessage.Reciever.csproj", "{23A6E9BF-93C9-4E9D-B0C3-FE35FE7D15D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQMessage.Reciever", "RabbitMQMessage.Reciever\RabbitMQMessage.Reciever.csproj", "{23A6E9BF-93C9-4E9D-B0C3-FE35FE7D15D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.API", "RabbitMQ.API\RabbitMQ.API.csproj", "{F9CA3A96-8466-4CBD-8747-6D9C06EA8628}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,15 @@ Global
 		{23A6E9BF-93C9-4E9D-B0C3-FE35FE7D15D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23A6E9BF-93C9-4E9D-B0C3-FE35FE7D15D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23A6E9BF-93C9-4E9D-B0C3-FE35FE7D15D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9CA3A96-8466-4CBD-8747-6D9C06EA8628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9CA3A96-8466-4CBD-8747-6D9C06EA8628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9CA3A96-8466-4CBD-8747-6D9C06EA8628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9CA3A96-8466-4CBD-8747-6D9C06EA8628}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11AFA47B-C515-4C36-8FA6-7430D6B0C0CE}
 	EndGlobalSection
 EndGlobal
