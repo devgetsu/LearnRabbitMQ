@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.API.Interfaces;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
@@ -10,41 +11,20 @@ namespace RabbitMQ.API.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
-        private readonly IModel _channel;
+        private readonly IRabbitMqService _mqService;
 
-        public MessageController(IModel channel)
+        public MessageController(IRabbitMqService mqService)
         {
-            _channel = channel;
+            _mqService = mqService;
         }
 
-        [HttpPost("publish")]
-        public IActionResult Publish([FromBody] string message)
+        [Route("[action]/{message}")]
+        [HttpGet]
+        public IActionResult SendMessage(string message)
         {
-            var body = Encoding.UTF8.GetBytes(message);
+            _mqService.SendMessage(message);
 
-            _channel.BasicPublish(
-                exchange: "",
-                routingKey: "MyQueue",
-                basicProperties: null,
-                body: body);
-
-            return Ok(new { status = "Message published" });
-        }
-
-        [HttpGet("consume")]
-        public IActionResult Consume()
-        {
-            var consumer = new EventingBasicConsumer(_channel);
-            consumer.Received += (model, ea) =>
-            {
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine($"Received message: {message}");
-            };
-
-            _channel.BasicConsume(queue: "MyQueue", autoAck: true, consumer: consumer);
-
-            return Ok(new { status = "Started consuming messages" });
+            return Ok("Send Message");
         }
     }
 }

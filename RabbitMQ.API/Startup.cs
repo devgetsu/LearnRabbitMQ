@@ -1,4 +1,6 @@
-﻿using RabbitMQ.Client;
+﻿using RabbitMQ.API.Interfaces;
+using RabbitMQ.API.Services;
+using RabbitMQ.Client;
 
 namespace RabbitMQ.API
 {
@@ -18,24 +20,8 @@ namespace RabbitMQ.API
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-            services.AddSingleton<IConnection>(sp =>
-            {
-                var factory = new ConnectionFactory()
-                {
-                    HostName = "localhost",
-                    Port = 5672,
-                    UserName = "guest",
-                    Password = "guest"
-                };
-
-                return factory.CreateConnection();
-            });
-
-            services.AddSingleton<IModel>(sp =>
-            {
-                var connection = sp.GetRequiredService<IConnection>();
-                return connection.CreateModel();
-            });
+            services.AddScoped<IRabbitMqService, RabbitMqService>();
+            services.AddHostedService<RabbitMqListener>();
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
